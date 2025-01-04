@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        /* Additional styling for dropdown */
+        .dropdown-item {
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <div>
+        
+        <nav class="bg-white border-gray-200 dark:bg-gray-900">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="/static/src/Python_logo_01.svg.png" class="h-8" alt="Flowbite Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Advance
+                        Python</span>
+                </a>
+                <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                    <button type="button"
+                        class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                        id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
+                        data-dropdown-placement="bottom">
+                        <span class="sr-only">Open user menu</span>
+                        <div class="relative">
+                            <img class="w-10 h-10 object-cover rounded-full" src="/static/klaklok/klaklok/chhayhak (2).jpg" alt="">
+                            <span
+                                class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                        </div>
+                    </button>
+
+                    <!-- Dropdown menu -->
+                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                        id="user-dropdown">
+                        <div class="px-4 py-3">
+                            <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+                            <span
+                                class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                        </div>
+                        <ul class="py-2" aria-labelledby="user-menu-button">
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                    out</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button data-collapse-toggle="navbar-user" type="button"
+                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        aria-controls="navbar-user" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+                    <ul
+                        class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                                aria-current="page">Home</a>
+                        </li>
+                        <li>
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                                class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">LAB
+                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg></button>
+                            <!-- Dropdown menu -->
+                            <div id="dropdownNavbar"
+                                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                    aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="/home"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LAB1</a>
+                                    </li>
+                                    <li>
+                                        <a href="/lab2"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LAB2</a>
+                                    </li>
+                                    <li>
+                                        <a href="/lab3"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LAB3</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/lab4"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LAB4</a>
+                                    </li>
+                                    <li>
+                                        <a href="/lab5"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dictionary</a>
+                                    </li>
+                                </ul>
+                                <div class="py-1">
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                        out</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+
+    </div>
+    
+    <div id="app" class="p-4">      
+        <form class="max-w-2xl mx-auto" @submit.prevent="fetchData">
+            <h1 class="mb-4 text-3xl text-center font-extrabold text-gray-900 dark:text-white md:text-4xl lg:text-6xl">
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Oxford</span>
+              Dictionary
+            </h1>
+
+            <label for="default-search"
+                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
+                </div>
+                <input type="text" id="default-search" v-model="searchTerm" autocomplete="off"
+                    @focus="showDropdown = true" @blur="handleBlur" @input="handleInput"
+                    class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Search any word or phrase" required />
+
+                <button type="submit"
+                    class="absolute end-2.5 bottom-2.5 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+
+                <!-- Dropdown -->
+                <div v-if="showDropdown && filteredHistory.length > 0"
+                    class="absolute top-full left-0 w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                    <ul>
+                        <li v-for="(item, index) in filteredHistory" :key="index"
+                            @mousedown.prevent="selectHistory(item)" class="dropdown-item">
+                            [[ item ]]
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Error message -->
+            <div v-if="showError"
+                class="max-w-2xl mx-auto mt-4 p-4 bg-red-100 border border-red-400 rounded-lg text-red-700">
+                <h2 class="text-xl font-bold">[[ errorMessage.title ]]</h2>
+                <p class="mt-2">[[ errorMessage.message ]]</p>
+                <p class="mt-2"><i>[[ errorMessage.resolution ]]</i></p>
+            </div>
+
+            <!-- Results -->
+            <div v-if="searchTerm && word_list.length > 0" class="mt-2">
+                <p class="text-4xl text-gray-900 dark:text-white font-medium mb-1">[[ word_list[0].word ]]</p>
+
+                <div class="flex items-center">
+                    <div v-for="(phonetic, index) in word_list[0].phonetics.filter(p => p.audio)"
+                        :key="'phonetic' + index" class="flex items-center me-4">
+                        <span v-if="phonetic.audio.includes('au')">AU</span>
+                        <span v-else-if="phonetic.audio.includes('uk')">UK</span>
+                        <span v-else-if="phonetic.audio.includes('us')">US</span>
+                        <span v-else></span>
+
+                        <i class="fa-solid fa-volume-high ms-2 cursor-pointer" @click="playAudio(phonetic.audio)"></i>
+                        <span v-if="phonetic.text" class="text-gray-500 text-base ms-1">[[ phonetic.text ]]</span>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-gray-500 text-lg whitespace-pre-line dark:text-gray-400 mt-2">
+                        DEFINITION FOR <span class="italic">[[ word_list[0].word ]]</span>
+                    </p>
+                </div>
+
+                <div class="w-full max-w-2xl p-8 bg-white rounded-lg shadow-lg mt-2">
+                    <div v-for="(meaning, index) in word_list[0].meanings" :key="'meaning-' + index">
+                        <h6 class="text-2xl text-teal-600 font-bold dark:text-white mt-1">[[ meaning.partOfSpeech ]]
+                        </h6>
+                        <p class="mb-2 text-base text-gray-500 dark:text-gray-400 mt-4">Definitions</p>
+                        <ul class="max-w-md space-y-1 text-gray-900 list-disc list-inside">
+                            <div v-if="meaning.definitions.length > 0">
+                                <div v-for="(definition, index) in meaning.definitions" :key="'definition' + index">
+                                    <p class="text-base text-gray-900 dark:text-white mt-2">
+                                        [[index + 1 ]]. [[ definition.definition ]]
+                                    </p>
+
+                                    <li v-if="definition.example" class="m-2 text-gray-500 italic">
+                                        [[ definition.example ]]
+                                    </li>
+                                </div>
+                            </div>
+                        </ul>
+
+                        <div v-if="meaning.synonyms.length > 0">
+                            <p class="text-gray-500 dark:text-gray-400 mt-4">Synonyms:
+                                <span class="font-semibold text-gray-900 dark:text-white">
+
+                                    <span class="font-semibold text-gray-900 dark:text-white">
+                                        [[ meaning.synonyms.join(', ') ]]
+                                    </span>
+
+                                </span>
+                            </p>
+                        </div>
+                        <div v-else>
+                            <p class="text-gray-500 dark:text-gray-400 mt-4">No synonym available</p>
+                        </div>
+                        <div v-if="meaning.antonyms.length > 0">
+                            <p class="text-gray-500 dark:text-gray-400 mt-2">
+                                Antonyms:
+                                <span class="font-semibold text-gray-900 dark:text-white">
+                                    [[ meaning.antonyms.join(', ') ]]
+                                </span>
+                            </p>
+                        </div>
+                        <div v-else>
+                            <p class="text-gray-500 dark:text-gray-400 mt-4">No antonym available</p>
+                        </div>
+                        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                    </div>
+                </div>
+
+                <div class="w-full max-w-2xl p-8 bg-white rounded-lg shadow-lg mt-4">
+                    <h5 class="text-xl font-bold dark:text-white">SOURCE OF [[ word_list[0].word ]]</h5>
+                    <div v-for="(url, index) in word_list[0].sourceUrls" :key="index">
+                        <a :href="url" target="_blank">[[ url ]]</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script
+        src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            delimiters: ['[[', ']]'],
+            data() {
+                return {
+                    searchTerm: '',
+                    word_list: [],
+                    showError: false,
+                    errorMessage: {
+                        title: "No Definitions Found",
+                        message: "Sorry pal, we couldn't find definitions for the word you were looking for.",
+                        resolution: "You can try the search again at a later time or head to the web instead."
+                    },
+                    history: [],
+                    filteredHistory: [],
+                    showDropdown: false
+                };
+            },
+            created() {
+                this.loadHistory();
+
+            },
+            methods: {
+                fetchData() {
+                    if (this.searchTerm.trim()) {
+                        let vm = this;
+                        let api_url = `https://api.dictionaryapi.dev/api/v2/entries/en/${this.searchTerm}`;
+                        $.LoadingOverlay("show", {
+                            image: "/static/src/loading.gif",
+                            imageAnimation: false,
+                            imageResizeFactor: 3
+                        });
+                        axios.get(api_url)
+                            .then(function (response) {
+                                if (response.data && response.data.length > 0) {
+                                    vm.word_list = response.data;
+                                    vm.showError = false;
+                                    vm.addToHistory(vm.searchTerm);
+                                    $.LoadingOverlay("hide", {
+                                        image: "/static/src/loading.gif",
+                                        imageAnimation: false,
+                                        imageResizeFactor: 3
+                                    });
+                                } else {
+                                    vm.word_list = [];
+                                    vm.showError = true;
+                                }
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                                vm.word_list = [];
+                                vm.showError = true;
+                                $.LoadingOverlay("hide", {
+                                    image: "/static/src/loading.gif",
+                                    imageAnimation: false,
+                                    imageResizeFactor: 3
+                                });
+                            });
+                    } else {
+                        this.word_list = [];
+                        this.showError = false;
+                    }
+                    this.showDropdown = false; // Hide dropdown on search
+                },
+                playAudio(audioUrl) {
+                    const audio = new Audio(audioUrl);
+                    audio.play();
+                },
+                addToHistory(term) {
+                    let history = this.getHistory();
+                    if (!history.includes(term) && this.word_list.length > 0) {
+                        history.push(term);
+                        this.setHistory(history);
+                        this.loadHistory();
+                    }
+                },
+                setHistory(history) {
+                    document.cookie = `searchHistory=${encodeURIComponent(JSON.stringify(history))};path=/`;
+                },
+                getHistory() {
+                    const cookies = document.cookie.split(';');
+                    const historyCookie = cookies.find(cookie => cookie.trim().startsWith('searchHistory='));
+                    if (historyCookie) {
+                        const historyString = historyCookie.split('=')[1];
+                        return JSON.parse(decodeURIComponent(historyString));
+                    }
+                    return [];
+                },
+                loadHistory() {
+                    this.history = this.getHistory();
+                },
+                handleInput() {
+                    this.filterHistory();
+                    if (this.searchTerm.trim() === '') {
+                        this.filteredHistory = [];
+                        this.word_list = [];
+                        this.showError = false;
+                    }
+                    this.showDropdown = this.filteredHistory.length > 0;
+                },
+                filterHistory() {
+                    if (this.searchTerm.trim() === '') {
+                        this.filteredHistory = [];
+                    } else {
+                        this.filteredHistory = this.history.filter(item =>
+                            item.toLowerCase().includes(this.searchTerm.toLowerCase())
+                        );
+                    }
+                },
+                selectHistory(term) {
+                    this.searchTerm = term;
+                    this.showDropdown = false;
+                    this.fetchData();
+                },
+                handleBlur() {
+                    // Delay hiding dropdown to allow click event to be processed
+                    setTimeout(() => {
+                        if (!this.$el.querySelector('#default-search').matches(':focus')) {
+                            this.showDropdown = false;
+                        }
+                    }, 200);
+                }
+            },
+            watch: {
+                searchTerm(newTerm) {
+                    if (newTerm.trim() === '') {
+                        this.filteredHistory = [];
+                        this.word_list = [];
+                        this.showError = false;
+                    }
+                }
+            }
+        }).mount("#app");
+    </script>
+
+</body>
+
+</html>

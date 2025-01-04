@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klaklok</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <linK href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .swal2-confirm {
+            background-color: #6D28D9 !important;
+            color: white !important;
+            border: none !important;
+        }
+
+        .swal2-confirm:hover {
+            background-color: #4C1D95 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 max-w-full">
+    <div id="app">
+        <div>
+            <nav class="bg-white border-gray-200 dark:bg-gray-900">
+                <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                    <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="/static/src/Python_logo_01.svg.png" class="h-8" alt="Flowbite Logo" />
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Advance
+                            Python</span>
+                    </a>
+                    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                        <button type="button"
+                            class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                            id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
+                            data-dropdown-placement="bottom">
+                            <span class="sr-only">Open user menu</span>
+
+                            <div class="relative">
+
+                                <img class="w-10 h-10 rounded-full" src="/static/klaklok/klaklok/chhayhak (2).jpg"
+                                    alt="">
+                                <span
+                                    class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                            </div>
+                        </button>
+                        <!-- <a href="#"
+                            class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg group dark:text-white">
+                            <svg aria-hidden="true" class="h-4" viewBox="0 0 40 38" fill="none"
+                                xmlns="http://www.w3.org/2000/svg"><i class="fa-solid fa-wallet mt-1"></i></svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap"></i>Your Coins</span>
+                            <span
+                                class="inline-flex items-center justify-center  px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">[[wallet]]<i
+                                    class="fa-solid fa-coins ml-2" style="color:goldenrod"></i></span>
+                        </a> -->
+                        <!-- Dropdown menu -->
+                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                            id="user-dropdown">
+                            <div class="px-4 py-3">
+                                <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+                                <span
+                                    class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                            </div>
+                            <ul class="py-2" aria-labelledby="user-menu-button">
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                        out</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button data-collapse-toggle="navbar-user" type="button"
+                            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                            aria-controls="navbar-user" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 17 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+                        id="navbar-user">
+                        <ul
+                            class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                            <li>
+                                <a href="#"
+                                    class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                                    aria-current="page">Home</a>
+                            </li>
+                            <li>
+                                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                                    class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">LAB
+                                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 4 4 4-4" />
+                                    </svg></button>
+                                <!-- Dropdown menu -->
+                                <div id="dropdownNavbar"
+                                    class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                        aria-labelledby="dropdownLargeButton">
+                                        <li>
+                                            <a href="/home"
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LAB1</a>
+                                        </li>
+                                        <li>
+                                            <a href="/lab2"
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LAB2</a>
+                                        </li>
+                                        <li>
+                                            <a href="/lab3"
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LAB3</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/lab4"
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LAB4</a>
+                                        </li>
+                                        <li>
+                                            <a href="/lab5"
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dictionary</a>
+                                        </li>
+                                    </ul>
+                                    <div class="py-1">
+                                        <a href="#"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                            out</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+        <div class="flex justify-center items-center p-8 min-h-screen w-full">
+            <div>
+                <form class="max-w-auto p-6 bg-white rounded-lg shadow-lg">
+                    <div class="grid gap-x-8 gap-y-4 grid-cols-3 text-center">
+                        <div v-for="(image, index) in images" :key="index" :class="[
+                                'p-4 transition-colors duration-500', 
+                                randomImages.includes(image.src) ? 'bg-gray-200' : 'bg-transparent'
+                            ]">
+                            <div class="justify-content-between mb-2">
+                                <span v-if="image.betCount > 0"
+                                    class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+                                    @click="!isBetting && placeBet(index)" style="cursor:pointer;">+</span>
+                                <span v-if="image.betCount > 0"
+                                    class="mb-2 bg-green-80 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                                    Bets: [[image.betCount]]
+                                </span>
+                                <span v-if="image.betCount > 0"
+                                    class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+                                    @click="!isBetting&&reduceBet(index)" style="cursor:pointer;">-</span>
+
+
+                            </div>
+                            <button type="button" @click="placeBet(index)" :disabled="isBetting">
+                                <img class="rounded-t-lg" :src="image.src" alt="Image" />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-center">
+                        <button type="button"
+                            class="text-white mr-2 bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+                            @click="toggleBet" :disabled="isBetDisabled">[[betText]]</button>
+                        <button type="button"
+                            class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                            @click="clearBets">Clear All Bet</button>
+                    </div>
+                    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                    <div class="grid gap-x-8 gap-y-4 grid-cols-3">
+                        <div v-for="(img, idx) in randomImages" :key="'random-' + idx">
+                            <img class="rounded-t-lg" :src="img" alt="" />
+                        </div>
+                    </div>
+                    <audio id="bet-sound" src="/static/klaklok/klaklok/sound/ak2.mp3" preload="auto"></audio>
+                    <audio id="betting" src="/static/klaklok/klaklok/sound/click.mp3" preload="auto"></audio>
+                    <audio id="success" src="/static/klaklok/klaklok/sound/success.mp3" preload="auto"></audio>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            delimiters: ['[[', ']]'],
+            data() {
+                return {
+                    images: [
+                        { src: '/static/klaklok/klaklok/1.jpg', betCount: 0 },
+                        { src: '/static/klaklok/klaklok/2.jpg', betCount: 0 },
+                        { src: '/static/klaklok/klaklok/3.jpg', betCount: 0 },
+                        { src: '/static/klaklok/klaklok/4.jpg', betCount: 0 },
+                        { src: '/static/klaklok/klaklok/5.jpg', betCount: 0 },
+                        { src: '/static/klaklok/klaklok/6.jpg', betCount: 0 }
+                    ],
+                    activeIndices: [0, 3, 5],
+                    intervalId: null,
+                    randomImages: [
+                        '/static/klaklok/klaklok/1.jpg',
+                        '/static/klaklok/klaklok/1.jpg',
+                        '/static/klaklok/klaklok/1.jpg'
+                    ],
+                    wallet: 10,
+                    betText: 'Bet',
+                    isBetting: false,
+                    isBetDisabled: false,
+
+
+                }
+            },
+            methods: {
+                bet() {
+                    const betSound = document.getElementById('bet-sound');
+                    const betting = document.getElementById('betting');
+                    const success = document.getElementById('success');
+
+
+                    if (this.images.every(image => image.betCount === 0)) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'No Bets Placed',
+                            text: 'Please place at least one bet before proceeding.',
+                            customClass: {
+                                confirmButton: 'swal2-confirm'
+                            }
+                        });
+                        return;
+                    }
+
+
+                    betSound.play()
+                    this.isBetting = true;
+                    this.betText = 'Stop';
+
+
+                    if (this.intervalId) {
+                        clearInterval(this.intervalId)
+                    }
+
+                    let steps = Math.floor(Math.random() * 30) + 80;
+                    let stepCount = 0
+
+                    this.intervalId = setInterval(() => {
+                        // Move the active indices forward
+                        this.activeIndices = this.activeIndices.map(index => (index + 1) % this.images.length);
+                        this.updateRandomImages()
+                        this.betText = 'Stop'
+
+                        stepCount++;
+                        if (stepCount >= steps) {
+                        }
+                    }, 100);
+                },
+                toggleBet() {
+                    if (this.isBetting) {
+                        this.stopBet();
+                    } else {
+                        this.bet();
+                    }
+                },
+                updateRandomImages() {
+                    this.randomImages = Array.from({ length: 3 }, () => {
+                        const randomIndex = Math.floor(Math.random() * this.images.length);
+                        return this.images[randomIndex].src;
+                    });
+                }
+                ,
+                placeBet(index) {
+                    if (this.isBetting) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Betting in Progress',
+                            text: 'You cannot place a bet while betting is in progress.',
+                            customClass: {
+                                confirmButton: 'swal2-confirm'
+                            }
+                        });
+                        return;
+                    }
+                    if (this.wallet > 0) {
+                        this.images[index].betCount++;
+                        this.wallet--
+                        const betting = document.getElementById('betting');
+                        betting.currentTime = 0;
+                        betting.play()
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Not Enough Coins',
+                            text: 'You have no more coins to place a bet.',
+                            customClass: {
+                                confirmButton: 'swal2-confirm'
+                            }
+                        });
+                    }
+
+                },
+                reduceBet(index) {
+                    if (this.images[index].betCount > 0) {
+                        this.images[index].betCount--;
+                        this.wallet++;
+                    }
+                },
+                clearBets() {
+                    if (this.isBetting) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Cannot Clear Bets',
+                            text: 'You cannot clear bets while betting is in progress.',
+                            customClass: {
+                                confirmButton: 'swal2-confirm'
+                            }
+                        });
+                        return;
+                    }
+
+
+                    this.images.forEach(image => {
+                        image.betCount = 0;
+                    });
+                    this.randomImages = [
+                        '/static/klaklok/klaklok/1.jpg',
+                        '/static/klaklok/klaklok/1.jpg',
+                        '/static/klaklok/klaklok/1.jpg'
+                    ];
+                    this.isBetDisabled = false;
+                }
+                ,
+                stopBet() {
+                    clearInterval(this.intervalId)
+                    const betSound = document.getElementById('bet-sound');
+                    betSound.pause()
+                    betSound.currentTime = 0;
+                    this.isBetting = false;
+                    this.betText = 'Bet'
+                    this.showResults();
+                    this.isBetDisabled = true;
+
+
+                },
+                showResults() {
+                    // Count how many times each image appears in the random images
+                    const results = this.randomImages.reduce((acc, src) => {
+                        acc[src] = (acc[src] || 0) + 1;
+                        return acc;
+                    }, {});
+
+                    // Calculate the winnings for each bet
+                    let resultText = '';
+                    let result = ''
+                    let winning = ''
+                    let hasWinningBets = false;
+
+                    this.images.forEach(image => {
+                        if (image.betCount > 0 && results[image.src] > 0) {
+                            // Calculate winnings only if the image appears in the random images
+                            const winnings = image.betCount * results[image.src];
+                            resultText += `
+                                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                    <img src="${image.src}" alt="Image" style="width: 100px; height: 100px; margin-right: 10px;">
+                                    <span>Bet Match: You win ${winnings}!</span>
+                                </div>`;
+                            hasWinningBets = true;
+                            result = 'success'
+                            winning = 'Congratulation'
+                            success.play()
+                        }
+                    });
+
+                    if (!hasWinningBets) {
+                        winning = 'Next Time!'
+                        result = 'info'
+                        resultText = '<p>There is no match. Better luck next time!</p>';
+                    }
+
+                    Swal.fire({
+                        icon: result,
+                        title: winning,
+                        html: resultText,
+                        customClass: {
+                            confirmButton: 'swal2-confirm'
+                        }
+                    });
+                }
+            }
+        }).mount('#app')
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
+</body>
+
+</html>
